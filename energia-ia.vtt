@@ -1,0 +1,69 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:08.067
+Quando você pede uma resposta a uma inteligência artificial,
+computadores em outro lugar fazem milhares de operações para
+produzi-la.
+
+00:00:08.067 --> 00:00:16.367
+O consumo elétrico começa nos servidores, mas a conta também
+inclui a rede que os conecta e os sistemas que retiram calor
+do prédio.
+
+00:00:16.367 --> 00:00:24.800
+No treinamento, o modelo processa exemplos e ajusta seus
+parâmetros para melhorar as previsões. Esse ciclo se repete
+muitas vezes.
+
+00:00:24.800 --> 00:00:32.667
+Depois vem a inferência, que é usar o modelo pronto. Ao gerar
+texto, por exemplo, ele calcula a resposta um trecho de cada
+vez.
+
+00:00:32.667 --> 00:00:40.900
+Chips aceleradores, como as GPUs, fazem muitas contas em
+paralelo. Em tarefas grandes, vários chips trabalham juntos.
+
+00:00:40.900 --> 00:00:49.300
+Levar dados da memória aos chips e passar resultados entre
+servidores também custa energia. O cálculo é só uma parte da
+operação.
+
+00:00:49.300 --> 00:00:57.900
+Boa parte da eletricidade usada pelos equipamentos acaba
+virando calor. Se esse calor se acumula, os servidores podem
+superaquecer.
+
+00:00:57.900 --> 00:01:07.200
+Ventiladores, bombas e outros equipamentos levam o calor para
+fora. Alguns sistemas usam evaporação e, nesse caso, também
+consomem água.
+
+00:01:07.200 --> 00:01:17.167
+Imagine, só para fazer a conta, servidores usando cem
+quilowatts e outros equipamentos usando mais vinte. A
+potência total é de cento e vinte quilowatts.
+
+00:01:17.167 --> 00:01:27.233
+Se esse consumo se mantiver por vinte e quatro horas, o total
+será de dois mil oitocentos e oitenta quilowatts-hora. É
+energia acumulada ao longo do dia.
+
+00:01:27.233 --> 00:01:35.600
+Usar um modelo menor quando ele dá conta da tarefa, melhorar
+os chips e reduzir o gasto da refrigeração pode economizar
+eletricidade.
+
+00:01:35.600 --> 00:01:42.800
+Mas, se o número de solicitações crescer mais rápido do que a
+economia por tarefa, o consumo total ainda pode subir.
+
+00:01:42.800 --> 00:01:53.133
+O local também importa. Reunir muitos servidores numa mesma
+região pode exigir reforços na rede elétrica. As emissões
+dependem de como essa energia é gerada.
+
+00:01:53.133 --> 00:02:02.533
+Para entender a conta, olhe para três coisas: quanto custa
+cada tarefa, quantas tarefas são feitas e qual infraestrutura
+mantém tudo funcionando.

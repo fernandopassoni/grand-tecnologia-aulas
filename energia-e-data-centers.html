@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Aula em português do Brasil sobre o consumo elétrico dos data centers de inteligência artificial, com questionário e respostas comentadas.">
+<title>Por que os data centers de IA usam tanta eletricidade?</title>
+<style>
+:root{color-scheme:light;--bg:#eff3f5;--paper:#fff;--ink:#192a37;--dim:#485c66;--line:#d7e0e3;--brand:#095e55;--wash:#e0f1eb;--navy:#111e2a;--mint:#99edd0;--font:system-ui,"Aptos",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5.25rem}
+body{margin:0;color:var(--ink);background:var(--bg);font:1rem/1.56 var(--font)}
+h1,h2,h3,p{margin:0}
+a{color:var(--brand);text-underline-offset:.18em}
+button,textarea{font:inherit}
+button,summary{cursor:pointer}
+:focus-visible{outline:3px solid #148472;outline-offset:3px}
+[hidden]{display:none!important}
+.container{width:min(100% - 3rem,72rem);margin-inline:auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.bar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.bar .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem 1rem;min-height:5.25rem;padding-block:.55rem}
+.grand-brand{display:inline-grid;justify-items:center;gap:.25rem;color:#241f4d;text-align:center;font-family:"Avenir Next",Avenir,var(--font);font-size:.875rem;font-weight:600;line-height:1.2}
+.grand-brand img{display:block;width:2.65rem;height:auto}
+.bar nav{display:flex;gap:1.2rem;flex-wrap:wrap}
+.bar a{color:var(--brand);font-size:.9rem;text-decoration:none;font-weight:700}
+.bar a:hover{text-decoration:underline}
+.hero{padding:2.7rem 0 2.45rem;background:var(--navy);color:white}
+.eyebrow{color:var(--mint);font-weight:750;font-size:.89rem;margin-bottom:.4rem}
+h1{max-width:58rem;font-size:clamp(2.35rem,6.5vw,4.35rem);letter-spacing:-.06em;line-height:1.04}
+.hero p:last-child{max-width:41rem;margin-top:.95rem;color:#d4e3e9;font-size:clamp(1rem,2vw,1.14rem)}
+.lecture{display:grid;grid-template-columns:minmax(0,2.6fr) minmax(15.5rem,1fr);align-items:start;gap:1rem;padding-top:1.1rem}
+.card{border:1px solid var(--line);border-radius:1rem;background:var(--paper)}
+.player{overflow:hidden}
+video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#0c1723}
+.player-error{margin:0 1rem 1rem;padding:.7rem .8rem;background:#fff3e9;border:1px solid #edc6a8;border-radius:.5rem}
+.index{padding:1rem}
+.index h2{font-size:1.11rem;letter-spacing:-.015em;margin:0 .32rem .45rem}
+.index ol{list-style:none;margin:0;padding:0}
+.index button{display:grid;grid-template-columns:2.7rem 1fr;align-items:start;gap:.45rem;border:0;border-radius:.45rem;background:none;color:var(--ink);width:100%;padding:.48rem .32rem;font-size:.89rem;text-align:left}
+.index button:hover,.index button[aria-current=true]{background:var(--wash)}
+.index button[aria-current=true]{font-weight:730}
+.index time{color:var(--brand);font-variant-numeric:tabular-nums;font-weight:700}
+summary{color:var(--brand);font-weight:720;font-size:.9rem}
+.open details p{margin-top:.65rem;color:var(--dim)}
+.quiz{padding:3rem 0 3.3rem}
+.quiz-head{margin-bottom:1rem}
+.quiz-head h2{font-size:clamp(1.95rem,5vw,2.7rem);line-height:1.14;letter-spacing:-.045em}
+.quiz-head p{margin-top:.43rem;color:var(--dim)}
+.subheading{font-size:1.18rem;margin:1.15rem 0 .65rem}
+.progress-line{margin-bottom:.85rem;display:flex;align-items:center;gap:.9rem;color:var(--dim);font-size:.875rem}
+progress{appearance:none;flex:1;height:.52rem;border:0;border-radius:1rem;overflow:hidden;background:#dbe6e7;accent-color:var(--brand)}
+progress::-webkit-progress-bar{background:#dbe6e7}
+progress::-webkit-progress-value{background:var(--brand);border-radius:1rem}
+progress::-moz-progress-bar{background:var(--brand);border-radius:1rem}
+.questions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}
+.question{min-width:0;margin:0;padding:1.05rem 1.15rem}
+.question legend{float:left;width:100%;padding:0;margin-bottom:.8rem;font-weight:720;line-height:1.4}
+.question legend+*{clear:both}
+.q-num{display:block;color:var(--brand);font-size:.86rem;font-weight:760;margin-bottom:.28rem}
+.choices{display:grid;gap:.45rem}
+.choice{display:flex;align-items:start;gap:.55rem;padding:.45rem .56rem;border:1px solid var(--line);border-radius:.45rem;cursor:pointer}
+.choice:has(input:checked){background:var(--wash);border-color:#92cabc}
+.choice input{margin:.31rem 0 0;flex:none;accent-color:var(--brand)}
+.feedback{margin-top:.7rem;border-radius:.45rem;background:var(--wash);padding:.55rem .68rem;font-size:.92rem}
+.question[data-result=wrong] .feedback{background:#fff2ee;color:#762b25}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .8rem;margin-top:1.05rem}
+.action{background:var(--brand);border:1px solid var(--brand);color:white;border-radius:.57rem;padding:.61rem .87rem;font-weight:700}
+.action:hover{background:#034b43}
+.action.outline{background:transparent;color:var(--brand)}
+.action.outline:hover{background:var(--wash)}
+#resultado{font-weight:690}
+.open textarea{display:block;width:100%;min-height:6rem;padding:.55rem .62rem;border:1px solid #95aeb3;border-radius:.48rem;background:white;color:var(--ink);resize:vertical}
+.open details{margin-top:.7rem}
+section[id]{scroll-margin-top:1rem}
+@media(max-width:810px){.lecture{grid-template-columns:1fr}.index ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 .55rem}}
+@media(max-width:620px){.container{width:calc(100% - 2rem)}.bar nav{gap:.65rem}.hero{padding:2rem 0}.questions,.index ol{grid-template-columns:1fr}.quiz{padding-top:2rem}}
+@media(max-width:320px){html{scroll-padding-top:7.5rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="container">
+  <div class="grand-brand">
+    <img src="data:image/png;base64,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" alt="" width="156" height="137">
+    <span>Grand Tecnologia</span>
+  </div>
+  <nav aria-label="Nesta aula"><a href="./">Início</a><a href="#video">Vídeo</a><a href="#questionario">Questionário</a></nav>
+</div></header>
+<main>
+  <div class="hero"><div class="container">
+    <p class="eyebrow">Inteligência artificial</p>
+    <h1>Por que os data centers de IA usam tanta eletricidade?</h1>
+    <p>Entenda o papel dos servidores, da refrigeração e da transmissão de dados no consumo de energia.</p>
+  </div></div>
+  <section id="video" class="container lecture" aria-label="Vídeo da aula">
+    <div class="card player">
+      <video id="video-aula" src="energia-ia.mp4" controls controlslist="nodownload" preload="metadata" playsinline
+        aria-label="Vídeo completo com narração e legendas em português do Brasil" poster="capa-energia.jpg">
+        <track kind="captions" src="energia-ia.vtt" srclang="pt-BR" label="Português (Brasil)">
+        Seu navegador precisa oferecer suporte a vídeo MP4.
+      </video>
+      <p id="erro-video" class="player-error" role="alert" hidden>O vídeo não pôde ser carregado. Atualize a página para tentar novamente.</p>
+    </div>
+    <aside class="card index" aria-labelledby="titulo-capitulos">
+      <h2 id="titulo-capitulos">Capítulos do vídeo</h2>
+      <ol><li><button type="button" data-time="0" aria-current="true"><time datetime="PT0S">0:00</time><span>O que consome eletricidade</span></button></li>
+        <li><button type="button" data-time="16.367"><time datetime="PT16S">0:16</time><span>Treinamento e inferência</span></button></li>
+        <li><button type="button" data-time="32.667"><time datetime="PT32S">0:32</time><span>Chips e transmissão de dados</span></button></li>
+        <li><button type="button" data-time="49.3"><time datetime="PT49S">0:49</time><span>Calor e refrigeração</span></button></li>
+        <li><button type="button" data-time="67.2"><time datetime="PT67S">1:07</time><span>Potência e energia</span></button></li>
+        <li><button type="button" data-time="87.233"><time datetime="PT87S">1:27</time><span>Eficiência e demanda</span></button></li>
+        <li><button type="button" data-time="102.8"><time datetime="PT102S">1:42</time><span>Rede elétrica e emissões</span></button></li></ol>
+    </aside>
+  </section>
+
+  <section id="questionario" class="container quiz" aria-labelledby="titulo-quiz">
+    <div class="quiz-head">
+      <div>
+        <h2 id="titulo-quiz">Questionário</h2>
+        <p>Responda às sete questões e confira as explicações.</p>
+      </div>
+    </div>
+    <form id="form-quiz">
+      <h3 class="subheading">Múltipla escolha</h3>
+      <div class="progress-line">
+        <span id="respondidas">0 de 5 respondidas</span>
+        <progress id="progresso" max="5" value="0" aria-label="Questões de múltipla escolha respondidas"></progress>
+      </div>
+      <div class="questions">
+        <fieldset class="card question" data-answer="1">
+      <legend><span class="q-num">Questão 1</span>Quando você pede a um modelo já treinado que resuma um texto, de que etapa está participando?</legend>
+      <div class="choices"><label class="choice"><input type="radio" name="q1" value="0" required><span>Treinamento</span></label><label class="choice"><input type="radio" name="q1" value="1"><span>Inferência</span></label><label class="choice"><input type="radio" name="q1" value="2"><span>Manutenção elétrica</span></label><label class="choice"><input type="radio" name="q1" value="3"><span>Refrigeração</span></label></div>
+      <p class="feedback" hidden><strong></strong>Inferência é o uso do modelo treinado para processar uma entrada e gerar uma resposta.</p>
+    </fieldset>
+<fieldset class="card question" data-answer="2">
+      <legend><span class="q-num">Questão 2</span>Por que a movimentação de dados entra na conta de energia?</legend>
+      <div class="choices"><label class="choice"><input type="radio" name="q2" value="0" required><span>Porque dados só podem ser guardados em papel.</span></label><label class="choice"><input type="radio" name="q2" value="1"><span>Porque a rede substitui as GPUs.</span></label><label class="choice"><input type="radio" name="q2" value="2"><span>Porque transferir dados entre memória, chips e servidores também consome eletricidade.</span></label><label class="choice"><input type="radio" name="q2" value="3"><span>Porque a transmissão transforma diretamente eletricidade em água.</span></label></div>
+      <p class="feedback" hidden><strong></strong>Os componentes eletrônicos que transferem dados usam eletricidade, assim como os chips que fazem os cálculos.</p>
+    </fieldset>
+<fieldset class="card question" data-answer="0">
+      <legend><span class="q-num">Questão 3</span>Qual é a função da refrigeração em um data center?</legend>
+      <div class="choices"><label class="choice"><input type="radio" name="q3" value="0" required><span>Retirar o calor gerado pelos equipamentos.</span></label><label class="choice"><input type="radio" name="q3" value="1"><span>Aumentar a quantidade de solicitações.</span></label><label class="choice"><input type="radio" name="q3" value="2"><span>Ajustar os parâmetros de um modelo.</span></label><label class="choice"><input type="radio" name="q3" value="3"><span>Gerar parte da eletricidade usada pelos servidores.</span></label></div>
+      <p class="feedback" hidden><strong></strong>O calor precisa ser removido para manter os equipamentos dentro da temperatura de funcionamento.</p>
+    </fieldset>
+<fieldset class="card question" data-answer="3">
+      <legend><span class="q-num">Questão 4</span>Um data center usa 120 kW durante 6 horas. Quanta energia ele consome?</legend>
+      <div class="choices"><label class="choice"><input type="radio" name="q4" value="0" required><span>20 kWh</span></label><label class="choice"><input type="radio" name="q4" value="1"><span>120 kWh</span></label><label class="choice"><input type="radio" name="q4" value="2"><span>126 kWh</span></label><label class="choice"><input type="radio" name="q4" value="3"><span>720 kWh</span></label></div>
+      <p class="feedback" hidden><strong></strong>Multiplique a potência pelo tempo. 120 kW × 6 h = 720 kWh.</p>
+    </fieldset>
+<fieldset class="card question" data-answer="0">
+      <legend><span class="q-num">Questão 5</span>Em que situação o consumo total pode aumentar mesmo quando cada tarefa fica mais eficiente?</legend>
+      <div class="choices"><label class="choice"><input type="radio" name="q5" value="0" required><span>Quando o número de tarefas cresce o suficiente para superar a economia por tarefa.</span></label><label class="choice"><input type="radio" name="q5" value="1"><span>Quando as mesmas tarefas usam menos energia e todo o restante fica igual.</span></label><label class="choice"><input type="radio" name="q5" value="2"><span>Quando se troca a unidade de kWh por MWh.</span></label><label class="choice"><input type="radio" name="q5" value="3"><span>Quando o mesmo consumo é registrado em uma planilha.</span></label></div>
+      <p class="feedback" hidden><strong></strong>A energia total depende tanto do consumo de cada tarefa quanto do número de tarefas executadas.</p>
+    </fieldset>
+      </div>
+      <div class="actions">
+        <button class="action" type="submit">Corrigir múltipla escolha</button>
+        <p id="resultado" role="status"></p>
+      </div>
+      <h3 class="subheading">Questões discursivas</h3>
+      <div class="questions">
+        <fieldset class="card question open">
+      <legend><span class="q-num">Questão 6</span>Dê uma forma de reduzir a energia usada em uma solicitação de IA. Por que o consumo total ainda poderia aumentar?</legend>
+      <label for="resposta6" class="sr-only">Sua resposta à questão 6</label>
+      <textarea id="resposta6" name="q6" rows="4" placeholder="Escreva com suas palavras"></textarea>
+      <details><summary>Ver sugestão de resposta</summary><p>Um modelo menor pode usar menos eletricidade por solicitação. Se o número de solicitações crescer o suficiente, a economia individual pode ser superada pelo aumento de uso.</p></details>
+    </fieldset>
+<fieldset class="card question open">
+      <legend><span class="q-num">Questão 7</span>Dois data centers consomem a mesma energia. Por que eles podem ter impactos diferentes no sistema elétrico e nas emissões?</legend>
+      <label for="resposta7" class="sr-only">Sua resposta à questão 7</label>
+      <textarea id="resposta7" name="q7" rows="4" placeholder="Escreva com suas palavras"></textarea>
+      <details><summary>Ver sugestão de resposta</summary><p>Cada região tem uma capacidade de rede e uma combinação de fontes de eletricidade. Uma instalação pode exigir mais reforços na rede local ou gerar mais emissões indiretas se a eletricidade vier de fontes com maior emissão.</p></details>
+    </fieldset>
+      </div>
+      <div class="actions"><button class="action outline" type="reset">Limpar todas as respostas</button></div>
+    </form>
+  </section>
+</main>
+<script>
+const player = document.querySelector('#video-aula');
+const chapterButtons = Array.from(document.querySelectorAll('[data-time]'));
+const videoError = document.querySelector('#erro-video');
+
+function markChapter() {
+  let active = chapterButtons[0];
+  for (const button of chapterButtons) {
+    if (Number(button.dataset.time) <= player.currentTime + 0.05) active = button;
+  }
+  for (const button of chapterButtons) {
+    if (button === active) button.setAttribute('aria-current', 'true');
+    else button.removeAttribute('aria-current');
+  }
+}
+
+function showVideoError() {
+  videoError.hidden = false;
+  for (const button of chapterButtons) button.disabled = true;
+}
+
+player.addEventListener('error', showVideoError);
+if (player.error) showVideoError();
+player.addEventListener('timeupdate', markChapter);
+player.addEventListener('seeked', markChapter);
+player.addEventListener('contextmenu', event => event.preventDefault());
+
+for (const button of chapterButtons) {
+  button.addEventListener('click', () => {
+    player.currentTime = Number(button.dataset.time);
+    markChapter();
+    player.play().catch(() => {});
+  });
+}
+
+const quiz = document.querySelector('#form-quiz');
+const objective = Array.from(quiz.querySelectorAll('[data-answer]'));
+const progress = document.querySelector('#progresso');
+const count = document.querySelector('#respondidas');
+const result = document.querySelector('#resultado');
+
+function updateProgress() {
+  const answered = objective.filter(question => question.querySelector('input:checked')).length;
+  progress.value = answered;
+  count.textContent = `${answered} de ${objective.length} respondidas`;
+}
+
+function hideFeedback(question) {
+  delete question.dataset.result;
+  question.querySelector('.feedback').hidden = true;
+}
+
+quiz.addEventListener('change', event => {
+  if (event.target.type !== 'radio') return;
+  hideFeedback(event.target.closest('[data-answer]'));
+  result.textContent = '';
+  updateProgress();
+});
+
+quiz.addEventListener('submit', event => {
+  event.preventDefault();
+  let score = 0;
+  for (const question of objective) {
+    const correct = question.querySelector('input:checked')?.value === question.dataset.answer;
+    score += Number(correct);
+    question.dataset.result = correct ? 'right' : 'wrong';
+    const feedback = question.querySelector('.feedback');
+    feedback.querySelector('strong').textContent = correct ? 'Correto. ' : 'Incorreto. ';
+    feedback.hidden = false;
+  }
+  result.textContent = `Você acertou ${score} de ${objective.length} questões de múltipla escolha.`;
+});
+
+quiz.addEventListener('reset', () => {
+  for (const question of objective) hideFeedback(question);
+  for (const suggestion of quiz.querySelectorAll('.open details')) suggestion.open = false;
+  result.textContent = '';
+  setTimeout(updateProgress, 0);
+});
+
+updateProgress();
+</script>
+</body>
+</html>
