@@ -30,14 +30,14 @@ button,summary{cursor:pointer}
 .eyebrow{color:var(--mint);font-weight:750;font-size:.89rem;margin-bottom:.4rem}
 h1{max-width:58rem;font-size:clamp(2.35rem,6.5vw,4.35rem);letter-spacing:-.06em;line-height:1.04}
 .hero p:last-child{max-width:41rem;margin-top:.95rem;color:#d4e3e9;font-size:clamp(1rem,2vw,1.14rem)}
-.lecture{display:grid;grid-template-columns:minmax(0,2.6fr) minmax(15.5rem,1fr);align-items:start;gap:1rem;padding-top:1.1rem}
+.lecture{width:100%}
 .card{border:1px solid var(--line);border-radius:1rem;background:var(--paper)}
-.player{overflow:hidden}
+.player{width:100%;overflow:hidden;background:#0c1723}
 video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#0c1723}
 .player-error{margin:0 1rem 1rem;padding:.7rem .8rem;background:#fff3e9;border:1px solid #edc6a8;border-radius:.5rem}
-.index{padding:1rem}
+.index{padding:1rem;margin-block-start:1.35rem}
 .index h2{font-size:1.11rem;letter-spacing:-.015em;margin:0 .32rem .45rem}
-.index ol{list-style:none;margin:0;padding:0}
+.index ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.25rem .55rem;list-style:none;margin:0;padding:0}
 .index button{display:grid;grid-template-columns:2.7rem 1fr;align-items:start;gap:.45rem;border:0;border-radius:.45rem;background:none;color:var(--ink);width:100%;padding:.48rem .32rem;font-size:.89rem;text-align:left}
 .index button:hover,.index button[aria-current=true]{background:var(--wash)}
 .index button[aria-current=true]{font-weight:730}
@@ -70,7 +70,7 @@ progress::-moz-progress-bar{background:var(--brand);border-radius:1rem}
 .action.outline:hover{background:var(--wash)}
 #resultado{font-weight:690}
 section[id]{scroll-margin-top:1rem}
-@media(max-width:810px){.lecture{grid-template-columns:1fr}.index ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 .55rem}}
+@media(max-width:810px){.index ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.container{width:calc(100% - 2rem)}.bar nav{gap:.65rem}.hero{padding:2rem 0}.questions,.index ol{grid-template-columns:1fr}.quiz{padding-top:2rem}}
 @media(max-width:320px){html{scroll-padding-top:7.5rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -88,15 +88,15 @@ section[id]{scroll-margin-top:1rem}
     <h1>Risco e retorno</h1>
     <p>Um dinheiro de aniversário e um jogo na lista de desejos. Acompanhe essa história e descubra por que o prazo e a possibilidade de perder dinheiro importam.</p>
   </div></div>
-  <section id="video" class="container lecture" aria-label="Vídeo da aula">
-    <div class="card player">
-      <video id="video-aula" src="risco-e-retorno.mp4" controls controlslist="nodownload" preload="metadata" playsinline
-        aria-label="Vídeo completo com narração e legendas em português do Brasil" poster="capa.jpg">
+  <section id="video" class="lecture" aria-label="Vídeo da aula">
+    <div class="player">
+      <video id="video-aula" src="risco-e-retorno.mp4?v=rev2" controls controlslist="nodownload" preload="metadata" playsinline
+        aria-label="Vídeo completo com narração e legendas em português do Brasil" poster="capa.jpg?v=rev2">
         Seu navegador precisa oferecer suporte a vídeo MP4.
       </video>
       <p id="erro-video" class="player-error" role="alert" hidden>O vídeo não pôde ser carregado. Atualize a página para tentar novamente.</p>
     </div>
-    <aside class="card index" aria-labelledby="titulo-capitulos">
+    <aside class="container card index" aria-labelledby="titulo-capitulos">
       <h2 id="titulo-capitulos">Capítulos do vídeo</h2>
       <ol>
         <li><button type="button" data-time="0" aria-current="true"><time datetime="PT0S">0:00</time><span>O dinheiro de aniversário</span></button></li>
