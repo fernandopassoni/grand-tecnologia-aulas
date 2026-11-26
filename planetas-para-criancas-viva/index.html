@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Aulas de astronomia para crianças, com vídeos em português e questionários interativos.">
+<title>Planetas para crianças · Viva Inovações</title>
+<style>
+:root{--bg:#eff3f5;--paper:#fff;--ink:#192a37;--dim:#485c66;--line:#d7e0e3;--brand:#095e55;--navy:#111e2a;--font:system-ui,"Aptos",sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5.25rem}
+body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.55 var(--font)}
+h1,h2,p{margin:0}
+:focus-visible{outline:3px solid #148472;outline-offset:3px}
+.container{width:min(100% - 3rem,72rem);margin-inline:auto}
+.bar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.bar .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem 1rem;min-height:5.25rem;padding-block:.55rem}
+.grand-brand{display:inline-grid;justify-items:center;gap:.25rem;color:#241f4d;text-align:center;font-family:"Avenir Next",Avenir,var(--font);font-size:.875rem;font-weight:600;line-height:1.2}
+.grand-brand{text-decoration:none}
+.grand-brand img{display:block;width:10rem;height:auto}
+.bar nav{display:flex;gap:1.2rem;flex-wrap:wrap}
+.bar nav a{color:var(--brand);font-size:.9rem;text-decoration:none;font-weight:700}
+.bar nav a:hover{text-decoration:underline}
+.hero{background:var(--navy);color:white;padding:2.6rem 0 2.5rem}
+.hero h1{font-size:clamp(2.55rem,6vw,4rem);line-height:1;letter-spacing:-.05em}
+.hero p{max-width:38rem;margin-top:.8rem;color:#d4e3e9}
+.aulas{margin:0;padding:1.3rem 0 3rem;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.aulas li{min-width:0}
+.aula{display:flex;flex-direction:column;height:100%;overflow:hidden;background:var(--paper);border:1px solid var(--line);border-radius:1rem;color:inherit;text-decoration:none;transition:border-color .15s,box-shadow .15s}
+.aula:hover{border-color:#9bbfb7;box-shadow:0 6px 20px #15374912}
+.aula:hover h2{color:var(--brand);text-decoration:underline;text-underline-offset:.15em}
+.capa{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:var(--navy)}
+.aula-conteudo{padding:1rem 1.05rem 1.3rem}
+.aula h2{font-size:clamp(1.15rem,2.1vw,1.45rem);line-height:1.22;letter-spacing:-.025em}
+.descricao{margin-top:.6rem;color:var(--dim)}
+@media(max-width:890px){.aulas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.container{width:calc(100% - 2rem)}.hero{padding:2rem 0}.aulas{grid-template-columns:1fr}}
+@media(max-width:320px){html{scroll-padding-top:7.5rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.aula{transition:none}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="container">
+    <a class="grand-brand" href="index.html" aria-label="Viva Inovações — início da coleção">
+    <img src="logo-viva.png" alt="Viva Inovações Educacionais" width="300" height="130">
+  </a>
+  </div>
+</header>
+<main>
+  <div class="hero">
+    <div class="container">
+      <h1>Planetas para crianças</h1>
+      <p>Assista aos vídeos e teste o que aprendeu sobre o Sistema Solar.</p>
+    </div>
+  </div>
+  <div class="container">
+    <ul class="aulas" id="aulas" aria-label="Aulas de Planetas para crianças">
+      <li>
+        <a class="aula" href="planeta-terra.html">
+          <img class="capa" src="../planetas-para-criancas/planeta-terra.jpg" alt="" width="640" height="360" decoding="async">
+          <div class="aula-conteudo">
+            <h2>Planeta Terra</h2>
+            <p class="descricao">Explore dez curiosidades sobre o nosso planeta, das estações do ano às montanhas que ficam no fundo do mar.</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="aula" href="o-sol.html">
+          <img class="capa" src="../planetas-para-criancas/o-sol.jpg" alt="" width="640" height="360" decoding="async">
+          <div class="aula-conteudo">
+            <h2>O Sol</h2>
+            <p class="descricao">Explore dez curiosidades sobre o Sol, desde a origem de sua luz até a viagem do Sistema Solar pela Via Láctea.</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="aula" href="a-lua.html">
+          <img class="capa" src="../planetas-para-criancas/a-lua.jpg" alt="" width="640" height="360" decoding="async">
+          <div class="aula-conteudo">
+            <h2>A Lua para Crianças</h2>
+            <p class="descricao">Descubra dez curiosidades sobre a Lua e entenda como ela muda de aparência no céu e influencia as marés.</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="aula" href="o-espaco-para-criancas.html">
+          <img class="capa" src="../planetas-para-criancas/o-espaco-para-criancas.jpg" alt="" width="640" height="360" loading="lazy" decoding="async">
+          <div class="aula-conteudo">
+            <h2>O Espaço para Crianças</h2>
+            <p class="descricao">Descubra cinco curiosidades sobre o espaço, do volume do Sol ao pôr do sol azul em Marte.</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="aula" href="o-planeta-mais-frio.html">
+          <img class="capa" src="../planetas-para-criancas/o-planeta-mais-frio.jpg" alt="" width="640" height="360" loading="lazy" decoding="async">
+          <div class="aula-conteudo">
+            <h2>Qual é o planeta mais frio?</h2>
+            <p class="descricao">Compare Urano e Netuno e veja como a resposta muda quando usamos a temperatura média ou a mínima.</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="aula" href="o-planeta-mais-quente.html">
+          <img class="capa" src="../planetas-para-criancas/o-planeta-mais-quente.jpg" alt="" width="640" height="360" loading="lazy" decoding="async">
+          <div class="aula-conteudo">
+            <h2>Qual é o planeta mais quente?</h2>
+            <p class="descricao">Descubra por que Vênus é mais quente que Mercúrio e o que a sonda Venera 13 conseguiu registrar na superfície.</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="aula" href="o-maior-planeta.html">
+          <img class="capa" src="../planetas-para-criancas/o-maior-planeta.jpg" alt="" width="640" height="360" loading="lazy" decoding="async">
+          <div class="aula-conteudo">
+            <h2>Qual é o maior planeta?</h2>
+            <p class="descricao">Conheça Júpiter, o maior planeta do Sistema Solar, e descubra como a Voyager 1 encontrou seus anéis.</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="aula" href="mercurio.html">
+          <img class="capa" src="../planetas-para-criancas/mercurio.jpg" alt="" width="640" height="360" loading="lazy" decoding="async">
+          <div class="aula-conteudo">
+            <h2>Mercúrio</h2>
+            <p class="descricao">Conheça o planeta mais próximo do Sol e descubra por que um dia solar em Mercúrio dura quase dois anos do planeta.</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="aula" href="venus-e-mercurio.html">
+          <img class="capa" src="../planetas-para-criancas/venus-e-mercurio.jpg" alt="" width="640" height="360" loading="lazy" decoding="async">
+          <div class="aula-conteudo">
+            <h2>Por que Vênus é mais quente que Mercúrio?</h2>
+            <p class="descricao">Mercúrio fica mais perto do Sol. Descubra como a atmosfera de Vênus faz dele o planeta mais quente do Sistema Solar.</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</main>
+</body>
+</html>

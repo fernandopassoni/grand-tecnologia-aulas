@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Aula em português sobre a Lua, suas fases, sua superfície e sua influência nas marés, com vídeo e questionário interativo.">
+<title>A Lua para Crianças · Viva Inovações</title>
+<style>
+:root{color-scheme:light;--bg:#eff3f5;--paper:#fff;--ink:#192a37;--dim:#485c66;--line:#d7e0e3;--brand:#095e55;--wash:#e0f1eb;--navy:#111e2a;--mint:#99edd0;--font:system-ui,"Aptos",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5.25rem}
+body{margin:0;color:var(--ink);background:var(--bg);font:1rem/1.56 var(--font)}
+h1,h2,h3,p{margin:0}
+a{color:var(--brand);text-underline-offset:.18em}
+button,textarea{font:inherit}
+button,summary{cursor:pointer}
+:focus-visible{outline:3px solid #148472;outline-offset:3px}
+[hidden]{display:none!important}
+.container{width:min(100% - 3rem,72rem);margin-inline:auto}
+.bar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.bar .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem 1rem;min-height:5.25rem;padding-block:.55rem}
+.grand-brand{display:inline-grid;justify-items:center;gap:.25rem;color:#241f4d;text-align:center;font-family:"Avenir Next",Avenir,var(--font);font-size:.875rem;font-weight:600;line-height:1.2}
+.grand-brand{text-decoration:none}
+.grand-brand img{display:block;width:10rem;height:auto}
+.bar nav{display:flex;gap:1.2rem;flex-wrap:wrap}
+.bar nav a{color:var(--brand);font-size:.9rem;text-decoration:none;font-weight:700}
+.bar nav a:hover{text-decoration:underline}
+.hero{padding:2.7rem 0 2.45rem;background:var(--navy);color:white}
+.eyebrow{color:var(--mint);font-weight:750;font-size:.89rem;margin-bottom:.4rem}
+h1{max-width:58rem;font-size:clamp(2.35rem,6.5vw,4.35rem);letter-spacing:-.06em;line-height:1.04}
+.hero p:last-child{max-width:41rem;margin-top:.95rem;color:#d4e3e9;font-size:clamp(1rem,2vw,1.14rem)}
+.lecture{display:grid;grid-template-columns:minmax(0,2.6fr) minmax(15.5rem,1fr);align-items:start;gap:1rem;padding-top:1.1rem}
+.card{border:1px solid var(--line);border-radius:1rem;background:var(--paper)}
+.player{overflow:hidden}
+video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#0c1723}
+.player-error{margin:0 1rem 1rem;padding:.7rem .8rem;background:#fff3e9;border:1px solid #edc6a8;border-radius:.5rem}
+.index{padding:1rem}
+.index h2{font-size:1.11rem;letter-spacing:-.015em;margin:0 .32rem .45rem}
+.index ol{list-style:none;margin:0;padding:0}
+.index button{display:grid;grid-template-columns:2.7rem 1fr;align-items:start;gap:.45rem;border:0;border-radius:.45rem;background:none;color:var(--ink);width:100%;padding:.48rem .32rem;font-size:.89rem;text-align:left}
+.index button:hover,.index button[aria-current=true]{background:var(--wash)}
+.index button[aria-current=true]{font-weight:730}
+.index time{color:var(--brand);font-variant-numeric:tabular-nums;font-weight:700}
+.quiz{padding:3rem 0 3.3rem}
+.quiz-head{margin-bottom:1rem}
+.quiz-head h2{font-size:clamp(1.95rem,5vw,2.7rem);line-height:1.14;letter-spacing:-.045em}
+.quiz-head p{margin-top:.43rem;color:var(--dim)}
+.subheading{font-size:1.18rem;margin:1.15rem 0 .65rem}
+.progress-line{margin-bottom:.85rem;display:flex;align-items:center;gap:.9rem;color:var(--dim);font-size:.875rem}
+progress{appearance:none;flex:1;height:.52rem;border:0;border-radius:1rem;overflow:hidden;background:#dbe6e7;accent-color:var(--brand)}
+progress::-webkit-progress-bar{background:#dbe6e7}
+progress::-webkit-progress-value{background:var(--brand);border-radius:1rem}
+progress::-moz-progress-bar{background:var(--brand);border-radius:1rem}
+.questions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}
+.question{min-width:0;margin:0;padding:1.05rem 1.15rem}
+.question legend{float:left;width:100%;padding:0;margin-bottom:.8rem;font-weight:720;line-height:1.4}
+.question legend+*{clear:both}
+.q-num{display:block;color:var(--brand);font-size:.86rem;font-weight:760;margin-bottom:.28rem}
+.choices{display:grid;gap:.45rem}
+.choice{display:flex;align-items:start;gap:.55rem;padding:.45rem .56rem;border:1px solid var(--line);border-radius:.45rem;cursor:pointer}
+.choice:has(input:checked){background:var(--wash);border-color:#92cabc}
+.choice input{margin:.31rem 0 0;flex:none;accent-color:var(--brand)}
+.feedback{margin-top:.7rem;border-radius:.45rem;background:var(--wash);padding:.55rem .68rem;font-size:.92rem}
+.question[data-result=wrong] .feedback{background:#fff2ee;color:#762b25}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .8rem;margin-top:1.05rem}
+.action{background:var(--brand);border:1px solid var(--brand);color:white;border-radius:.57rem;padding:.61rem .87rem;font-weight:700}
+.action:hover{background:#034b43}
+.action.outline{background:transparent;color:var(--brand)}
+.action.outline:hover{background:var(--wash)}
+#resultado{font-weight:690}
+section[id]{scroll-margin-top:1rem}
+@media(max-width:810px){.lecture{grid-template-columns:1fr}.index ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 .55rem}}
+@media(max-width:620px){.container{width:calc(100% - 2rem)}.bar nav{gap:.65rem}.hero{padding:2rem 0}.questions,.index ol{grid-template-columns:1fr}.quiz{padding-top:2rem}}
+@media(max-width:320px){html{scroll-padding-top:7.5rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="container">
+  <a class="grand-brand" href="index.html" aria-label="Viva Inovações — início da coleção">
+    <img src="logo-viva.png" alt="Viva Inovações Educacionais" width="300" height="130">
+  </a>
+</div></header>
+<main>
+  <div class="hero"><div class="container">
+    <p class="eyebrow">Ciências · Astronomia</p>
+    <h1>A Lua para Crianças</h1>
+    <p>Descubra dez curiosidades sobre a Lua e entenda como ela muda de aparência no céu e influencia as marés.</p>
+  </div></div>
+  <section id="video" class="container lecture" aria-label="Vídeo da aula">
+    <div class="card player">
+      <video id="video-aula" src="../planetas-para-criancas/a-lua.mp4" controls controlslist="nodownload" preload="metadata" playsinline
+        aria-label="Vídeo completo com narração e legendas em português do Brasil" poster="../planetas-para-criancas/a-lua.jpg">
+        Seu navegador precisa oferecer suporte a vídeo MP4.
+      </video>
+      <p id="erro-video" class="player-error" role="alert" hidden>O vídeo não pôde ser carregado. Atualize a página para tentar novamente.</p>
+    </div>
+    <aside class="card index" aria-labelledby="titulo-capitulos">
+      <h2 id="titulo-capitulos">Capítulos do vídeo</h2>
+      <ol>
+        <li><button type="button" data-time="0" aria-current="true"><time datetime="PT0S">0:00</time><span>A Lua, satélite natural da Terra</span></button></li>
+        <li><button type="button" data-time="35.40"><time datetime="PT35.40S">0:35</time><span>A órbita da Lua</span></button></li>
+        <li><button type="button" data-time="48.36"><time datetime="PT48.36S">0:48</time><span>Gravidade na Lua</span></button></li>
+        <li><button type="button" data-time="62.40"><time datetime="PT62.40S">1:02</time><span>A formação da Lua</span></button></li>
+        <li><button type="button" data-time="74.24"><time datetime="PT74.24S">1:14</time><span>Distância da Terra e tempo de viagem</span></button></li>
+        <li><button type="button" data-time="111.04"><time datetime="PT111.04S">1:51</time><span>Crateras, montanhas e planícies</span></button></li>
+        <li><button type="button" data-time="137.07"><time datetime="PT137.07S">2:17</time><span>Pegadas que duram muito</span></button></li>
+        <li><button type="button" data-time="155.01"><time datetime="PT155.01S">2:35</time><span>Temperaturas na Lua</span></button></li>
+        <li><button type="button" data-time="178.01"><time datetime="PT178.01S">2:58</time><span>A Lua e as marés</span></button></li>
+        <li><button type="button" data-time="198.47"><time datetime="PT198.47S">3:18</time><span>As oito fases da Lua</span></button></li>
+      </ol>
+    </aside>
+  </section>
+
+  <section id="questionario" class="container quiz" aria-labelledby="titulo-quiz">
+    <div class="quiz-head">
+      <div>
+        <h2 id="titulo-quiz">Questionário</h2>
+        <p>Responda às oito questões e confira as explicações.</p>
+      </div>
+    </div>
+    <form id="form-quiz">
+      <h3 class="subheading">Múltipla escolha</h3>
+      <div class="progress-line">
+        <span id="respondidas">0 de 8 respondidas</span>
+        <progress id="progresso" max="8" value="0" aria-label="Questões de múltipla escolha respondidas"></progress>
+      </div>
+      <div class="questions">
+        <fieldset class="card question" data-answer="1">
+          <legend><span class="q-num">Questão 1</span>Por que a Lua é chamada de satélite natural da Terra?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q1" value="0" required><span>Porque foi lançada da Terra em um foguete.</span></label>
+            <label class="choice"><input type="radio" name="q1" value="1"><span>Porque é um corpo natural que orbita a Terra.</span></label>
+            <label class="choice"><input type="radio" name="q1" value="2"><span>Porque fica parada sobre o mesmo lugar da Terra.</span></label>
+            <label class="choice"><input type="radio" name="q1" value="3"><span>Porque brilha com luz própria.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>A Lua é um corpo natural que gira ao redor da Terra. O caminho que ela percorre é chamado de órbita.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="3">
+          <legend><span class="q-num">Questão 2</span>Quanto tempo a Lua demora para completar uma órbita ao redor da Terra?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q2" value="0" required><span>Cerca de 24 horas.</span></label>
+            <label class="choice"><input type="radio" name="q2" value="1"><span>Cerca de 7 dias.</span></label>
+            <label class="choice"><input type="radio" name="q2" value="2"><span>Cerca de 365 dias.</span></label>
+            <label class="choice"><input type="radio" name="q2" value="3"><span>Cerca de 27,3 dias.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>Uma volta em torno da Terra dura aproximadamente 27,3 dias. Um ciclo completo de fases dura cerca de 29,5 dias.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="0">
+          <legend><span class="q-num">Questão 3</span>Como a gravidade na superfície lunar se compara à da Terra?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q3" value="0" required><span>É cerca de um sexto da gravidade na superfície da Terra.</span></label>
+            <label class="choice"><input type="radio" name="q3" value="1"><span>É aproximadamente igual à gravidade da Terra.</span></label>
+            <label class="choice"><input type="radio" name="q3" value="2"><span>É cerca de seis vezes maior.</span></label>
+            <label class="choice"><input type="radio" name="q3" value="3"><span>É nula.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>Na superfície lunar, a gravidade equivale a aproximadamente 17% da gravidade terrestre. Por isso, uma pessoa pesa menos na Lua.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="2">
+          <legend><span class="q-num">Questão 4</span>Quanto tempo a luz leva, em média, para percorrer a distância da Terra à Lua?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q4" value="0" required><span>Cerca de 13 horas.</span></label>
+            <label class="choice"><input type="radio" name="q4" value="1"><span>Pouco mais de 3 dias.</span></label>
+            <label class="choice"><input type="radio" name="q4" value="2"><span>Cerca de 1,3 segundo.</span></label>
+            <label class="choice"><input type="radio" name="q4" value="3"><span>Mais de 130 dias.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>A distância média é de cerca de 384.400 quilômetros. A luz percorre essa distância em cerca de 1,3 segundo.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="0">
+          <legend><span class="q-num">Questão 5</span>Como se formaram muitas crateras da Lua?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q5" value="0" required><span>Pelo impacto de pedaços de rocha espacial.</span></label>
+            <label class="choice"><input type="radio" name="q5" value="1"><span>Pela ação da chuva ao longo de muitas décadas.</span></label>
+            <label class="choice"><input type="radio" name="q5" value="2"><span>Pelas pegadas deixadas pelos astronautas.</span></label>
+            <label class="choice"><input type="radio" name="q5" value="3"><span>Pelo movimento das marés da Terra.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>Ao atingir a Lua em alta velocidade, objetos vindos do espaço abriram crateras na superfície.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="3">
+          <legend><span class="q-num">Questão 6</span>Por que as pegadas dos astronautas podem durar tanto tempo na Lua?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q6" value="0" required><span>Porque são preenchidas com água e congelam toda noite.</span></label>
+            <label class="choice"><input type="radio" name="q6" value="1"><span>Porque a gravidade impede que o solo mude.</span></label>
+            <label class="choice"><input type="radio" name="q6" value="2"><span>Porque a Lua nunca recebe luz solar.</span></label>
+            <label class="choice"><input type="radio" name="q6" value="3"><span>Porque praticamente não há vento nem chuva para apagá-las.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>A camada de gases ao redor da Lua é muito fina. As marcas se desgastam lentamente, por exemplo quando pequenas partículas atingem o solo.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="1">
+          <legend><span class="q-num">Questão 7</span>Qual é a influência da Lua sobre os oceanos da Terra?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q7" value="0" required><span>Ela mantém o nível do mar sempre igual.</span></label>
+            <label class="choice"><input type="radio" name="q7" value="1"><span>Sua gravidade ajuda a causar marés.</span></label>
+            <label class="choice"><input type="radio" name="q7" value="2"><span>Ela faz as ondas nascerem apenas durante a lua cheia.</span></label>
+            <label class="choice"><input type="radio" name="q7" value="3"><span>Sua luz aquece os oceanos e cria a maré alta.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>A atração gravitacional da Lua contribui para as mudanças no nível do mar. A gravidade do Sol também tem influência.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="2">
+          <legend><span class="q-num">Questão 8</span>Por que vemos fases diferentes da Lua?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q8" value="0" required><span>Porque o Sol muda de tamanho durante o mês.</span></label>
+            <label class="choice"><input type="radio" name="q8" value="1"><span>Porque a sombra da Terra cobre a Lua toda semana.</span></label>
+            <label class="choice"><input type="radio" name="q8" value="2"><span>Porque vemos porções diferentes da parte iluminada à medida que a Lua orbita a Terra.</span></label>
+            <label class="choice"><input type="radio" name="q8" value="3"><span>Porque a Lua produz mais luz em certos dias.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>O Sol ilumina a Lua. Conforme ela se move em sua órbita, a parte iluminada que vemos da Terra muda de aparência.</p>
+        </fieldset>
+      </div>
+      <div class="actions">
+        <button class="action" type="submit">Corrigir múltipla escolha</button>
+        <p id="resultado" role="status"></p>
+      </div>
+      <div class="actions"><button class="action outline" type="reset">Limpar todas as respostas</button></div>
+    </form>
+  </section>
+</main>
+<script>
+const player = document.querySelector('#video-aula');
+const chapterButtons = Array.from(document.querySelectorAll('[data-time]'));
+const videoError = document.querySelector('#erro-video');
+
+function markChapter() {
+  let active = chapterButtons[0];
+  for (const button of chapterButtons) {
+    if (Number(button.dataset.time) <= player.currentTime + 0.05) active = button;
+  }
+  for (const button of chapterButtons) {
+    if (button === active) button.setAttribute('aria-current', 'true');
+    else button.removeAttribute('aria-current');
+  }
+}
+
+function showVideoError() {
+  videoError.hidden = false;
+  for (const button of chapterButtons) button.disabled = true;
+}
+
+player.addEventListener('error', showVideoError);
+if (player.error) showVideoError();
+player.addEventListener('timeupdate', markChapter);
+player.addEventListener('seeked', markChapter);
+player.addEventListener('contextmenu', event => event.preventDefault());
+
+for (const button of chapterButtons) {
+  button.addEventListener('click', () => {
+    player.currentTime = Number(button.dataset.time);
+    markChapter();
+    player.play().catch(() => {});
+  });
+}
+
+const quiz = document.querySelector('#form-quiz');
+const objective = Array.from(quiz.querySelectorAll('[data-answer]'));
+const progress = document.querySelector('#progresso');
+const count = document.querySelector('#respondidas');
+const result = document.querySelector('#resultado');
+
+function updateProgress() {
+  const answered = objective.filter(question => question.querySelector('input:checked')).length;
+  progress.value = answered;
+  count.textContent = `${answered} de ${objective.length} respondidas`;
+}
+
+function hideFeedback(question) {
+  delete question.dataset.result;
+  question.querySelector('.feedback').hidden = true;
+}
+
+quiz.addEventListener('change', event => {
+  if (event.target.type !== 'radio') return;
+  hideFeedback(event.target.closest('[data-answer]'));
+  result.textContent = '';
+  updateProgress();
+});
+
+quiz.addEventListener('submit', event => {
+  event.preventDefault();
+  let score = 0;
+  for (const question of objective) {
+    const correct = question.querySelector('input:checked')?.value === question.dataset.answer;
+    score += Number(correct);
+    question.dataset.result = correct ? 'right' : 'wrong';
+    const feedback = question.querySelector('.feedback');
+    feedback.querySelector('strong').textContent = correct ? 'Correto. ' : 'Incorreto. ';
+    feedback.hidden = false;
+  }
+  result.textContent = `Você acertou ${score} de ${objective.length} questões de múltipla escolha.`;
+});
+
+quiz.addEventListener('reset', () => {
+  for (const question of objective) hideFeedback(question);
+  result.textContent = '';
+  setTimeout(updateProgress, 0);
+});
+
+updateProgress();
+</script>
+</body>
+</html>

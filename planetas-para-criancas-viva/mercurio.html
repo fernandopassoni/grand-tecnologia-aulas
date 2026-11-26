@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Aula em português sobre Mercúrio e suas características, com vídeo e questionário interativo.">
+<title>Mercúrio · Viva Inovações</title>
+<style>
+:root{color-scheme:light;--bg:#eff3f5;--paper:#fff;--ink:#192a37;--dim:#485c66;--line:#d7e0e3;--brand:#095e55;--wash:#e0f1eb;--navy:#111e2a;--mint:#99edd0;--font:system-ui,"Aptos",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5.25rem}
+body{margin:0;color:var(--ink);background:var(--bg);font:1rem/1.56 var(--font)}
+h1,h2,h3,p{margin:0}
+a{color:var(--brand);text-underline-offset:.18em}
+button,textarea{font:inherit}
+button,summary{cursor:pointer}
+:focus-visible{outline:3px solid #148472;outline-offset:3px}
+[hidden]{display:none!important}
+.container{width:min(100% - 3rem,72rem);margin-inline:auto}
+.bar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.bar .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem 1rem;min-height:5.25rem;padding-block:.55rem}
+.grand-brand{display:inline-grid;justify-items:center;gap:.25rem;color:#241f4d;text-align:center;font-family:"Avenir Next",Avenir,var(--font);font-size:.875rem;font-weight:600;line-height:1.2}
+.grand-brand{text-decoration:none}
+.grand-brand img{display:block;width:10rem;height:auto}
+.bar nav{display:flex;gap:1.2rem;flex-wrap:wrap}
+.bar nav a{color:var(--brand);font-size:.9rem;text-decoration:none;font-weight:700}
+.bar nav a:hover{text-decoration:underline}
+.hero{padding:2.7rem 0 2.45rem;background:var(--navy);color:white}
+.eyebrow{color:var(--mint);font-weight:750;font-size:.89rem;margin-bottom:.4rem}
+h1{max-width:58rem;font-size:clamp(2.35rem,6.5vw,4.35rem);letter-spacing:-.06em;line-height:1.04}
+.hero p:last-child{max-width:41rem;margin-top:.95rem;color:#d4e3e9;font-size:clamp(1rem,2vw,1.14rem)}
+.lecture{display:grid;grid-template-columns:minmax(0,2.6fr) minmax(15.5rem,1fr);align-items:start;gap:1rem;padding-top:1.1rem}
+.card{border:1px solid var(--line);border-radius:1rem;background:var(--paper)}
+.player{overflow:hidden}
+video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#0c1723}
+.player-error{margin:0 1rem 1rem;padding:.7rem .8rem;background:#fff3e9;border:1px solid #edc6a8;border-radius:.5rem}
+.index{padding:1rem}
+.index h2{font-size:1.11rem;letter-spacing:-.015em;margin:0 .32rem .45rem}
+.index ol{list-style:none;margin:0;padding:0}
+.index button{display:grid;grid-template-columns:2.7rem 1fr;align-items:start;gap:.45rem;border:0;border-radius:.45rem;background:none;color:var(--ink);width:100%;padding:.48rem .32rem;font-size:.89rem;text-align:left}
+.index button:hover,.index button[aria-current=true]{background:var(--wash)}
+.index button[aria-current=true]{font-weight:730}
+.index time{color:var(--brand);font-variant-numeric:tabular-nums;font-weight:700}
+.quiz{padding:3rem 0 3.3rem}
+.quiz-head{margin-bottom:1rem}
+.quiz-head h2{font-size:clamp(1.95rem,5vw,2.7rem);line-height:1.14;letter-spacing:-.045em}
+.quiz-head p{margin-top:.43rem;color:var(--dim)}
+.subheading{font-size:1.18rem;margin:1.15rem 0 .65rem}
+.progress-line{margin-bottom:.85rem;display:flex;align-items:center;gap:.9rem;color:var(--dim);font-size:.875rem}
+progress{appearance:none;flex:1;height:.52rem;border:0;border-radius:1rem;overflow:hidden;background:#dbe6e7;accent-color:var(--brand)}
+progress::-webkit-progress-bar{background:#dbe6e7}
+progress::-webkit-progress-value{background:var(--brand);border-radius:1rem}
+progress::-moz-progress-bar{background:var(--brand);border-radius:1rem}
+.questions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}
+.question{min-width:0;margin:0;padding:1.05rem 1.15rem}
+.question legend{float:left;width:100%;padding:0;margin-bottom:.8rem;font-weight:720;line-height:1.4}
+.question legend+*{clear:both}
+.q-num{display:block;color:var(--brand);font-size:.86rem;font-weight:760;margin-bottom:.28rem}
+.choices{display:grid;gap:.45rem}
+.choice{display:flex;align-items:start;gap:.55rem;padding:.45rem .56rem;border:1px solid var(--line);border-radius:.45rem;cursor:pointer}
+.choice:has(input:checked){background:var(--wash);border-color:#92cabc}
+.choice input{margin:.31rem 0 0;flex:none;accent-color:var(--brand)}
+.feedback{margin-top:.7rem;border-radius:.45rem;background:var(--wash);padding:.55rem .68rem;font-size:.92rem}
+.question[data-result=wrong] .feedback{background:#fff2ee;color:#762b25}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .8rem;margin-top:1.05rem}
+.action{background:var(--brand);border:1px solid var(--brand);color:white;border-radius:.57rem;padding:.61rem .87rem;font-weight:700}
+.action:hover{background:#034b43}
+.action.outline{background:transparent;color:var(--brand)}
+.action.outline:hover{background:var(--wash)}
+#resultado{font-weight:690}
+section[id]{scroll-margin-top:1rem}
+@media(max-width:810px){.lecture{grid-template-columns:1fr}.index ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 .55rem}}
+@media(max-width:620px){.container{width:calc(100% - 2rem)}.bar nav{gap:.65rem}.hero{padding:2rem 0}.questions,.index ol{grid-template-columns:1fr}.quiz{padding-top:2rem}}
+@media(max-width:320px){html{scroll-padding-top:7.5rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="container">
+  <a class="grand-brand" href="index.html" aria-label="Viva Inovações — início da coleção">
+    <img src="logo-viva.png" alt="Viva Inovações Educacionais" width="300" height="130">
+  </a>
+</div></header>
+<main>
+  <div class="hero"><div class="container">
+    <p class="eyebrow">Ciências · Astronomia</p>
+    <h1>Mercúrio</h1>
+    <p>Conheça o planeta mais próximo do Sol e descubra por que um dia solar em Mercúrio dura quase dois anos do planeta.</p>
+  </div></div>
+  <section id="video" class="container lecture" aria-label="Vídeo da aula">
+    <div class="card player">
+      <video id="video-aula" src="../planetas-para-criancas/mercurio.mp4" controls controlslist="nodownload" preload="metadata" playsinline
+        aria-label="Vídeo completo com narração e legendas em português do Brasil" poster="../planetas-para-criancas/mercurio.jpg">
+        Seu navegador precisa oferecer suporte a vídeo MP4.
+      </video>
+      <p id="erro-video" class="player-error" role="alert" hidden>O vídeo não pôde ser carregado. Atualize a página para tentar novamente.</p>
+    </div>
+    <aside class="card index" aria-labelledby="titulo-capitulos">
+      <h2 id="titulo-capitulos">Capítulos do vídeo</h2>
+      <ol>
+        <li><button type="button" data-time="0" aria-current="true"><time datetime="PT0S">0:00</time><span>Mercúrio no Sistema Solar</span></button></li>
+        <li><button type="button" data-time="9.48"><time datetime="PT9.48S">0:09</time><span>Crateras de impacto</span></button></li>
+        <li><button type="button" data-time="18.78"><time datetime="PT18.78S">0:18</time><span>Temperaturas extremas</span></button></li>
+        <li><button type="button" data-time="34"><time datetime="PT34S">0:34</time><span>Ano e dia solar</span></button></li>
+        <li><button type="button" data-time="48.82"><time datetime="PT48.82S">0:48</time><span>Eixo de rotação e polos</span></button></li>
+        <li><button type="button" data-time="57.48"><time datetime="PT57.48S">0:57</time><span>Núcleo metálico</span></button></li>
+        <li><button type="button" data-time="69.5"><time datetime="PT69.5S">1:09</time><span>Missões espaciais</span></button></li>
+      </ol>
+    </aside>
+  </section>
+
+  <section id="questionario" class="container quiz" aria-labelledby="titulo-quiz">
+    <div class="quiz-head">
+      <div>
+        <h2 id="titulo-quiz">Questionário</h2>
+        <p>Responda às oito questões e confira as explicações.</p>
+      </div>
+    </div>
+    <form id="form-quiz">
+      <h3 class="subheading">Múltipla escolha</h3>
+      <div class="progress-line">
+        <span id="respondidas">0 de 8 respondidas</span>
+        <progress id="progresso" max="8" value="0" aria-label="Questões de múltipla escolha respondidas"></progress>
+      </div>
+      <div class="questions">
+        <fieldset class="card question" data-answer="1">
+          <legend><span class="q-num">Questão 1</span>Qual descrição de Mercúrio está correta?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q1" value="0" required><span>É o maior planeta do Sistema Solar e o segundo mais próximo do Sol.</span></label>
+            <label class="choice"><input type="radio" name="q1" value="1"><span>É o menor planeta do Sistema Solar e o mais próximo do Sol.</span></label>
+            <label class="choice"><input type="radio" name="q1" value="2"><span>É o menor planeta do Sistema Solar e fica entre Vênus e a Terra.</span></label>
+            <label class="choice"><input type="radio" name="q1" value="3"><span>É um planeta gasoso com uma superfície coberta de nuvens.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>Mercúrio é o menor dos oito planetas do Sistema Solar e ocupa a primeira órbita a partir do Sol.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="3">
+          <legend><span class="q-num">Questão 2</span>Como se formaram muitas das crateras de Mercúrio?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q2" value="0" required><span>Pela ação de rios na superfície.</span></label>
+            <label class="choice"><input type="radio" name="q2" value="1"><span>Pelo acúmulo de gelo sobre o solo.</span></label>
+            <label class="choice"><input type="radio" name="q2" value="2"><span>Pela ação dos ventos sobre as rochas.</span></label>
+            <label class="choice"><input type="radio" name="q2" value="3"><span>Pelo impacto de corpos como asteroides e cometas.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>Muitas crateras são marcas deixadas por colisões de asteroides, cometas ou fragmentos com a superfície do planeta.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="0">
+          <legend><span class="q-num">Questão 3</span>O que ajuda a explicar a grande diferença de temperatura entre o dia e a noite?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q3" value="0" required><span>O solo recebe muita energia do Sol e quase não há atmosfera para reter calor.</span></label>
+            <label class="choice"><input type="radio" name="q3" value="1"><span>Uma atmosfera espessa bloqueia a luz durante o dia e retém o calor à noite.</span></label>
+            <label class="choice"><input type="radio" name="q3" value="2"><span>O planeta se afasta muito do Sol a cada noite e volta a se aproximar pela manhã.</span></label>
+            <label class="choice"><input type="radio" name="q3" value="3"><span>A luz solar só aquece regiões próximas dos polos.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>Na região iluminada, a superfície pode chegar a cerca de 430 °C. Sem uma atmosfera densa para reter o calor, a temperatura à noite pode cair até cerca de −180 °C.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="2">
+          <legend><span class="q-num">Questão 4</span>Quanto tempo Mercúrio leva para completar uma volta ao redor do Sol?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q4" value="0" required><span>Cerca de 24 dias terrestres.</span></label>
+            <label class="choice"><input type="radio" name="q4" value="1"><span>Cerca de 176 dias terrestres.</span></label>
+            <label class="choice"><input type="radio" name="q4" value="2"><span>Cerca de 88 dias terrestres.</span></label>
+            <label class="choice"><input type="radio" name="q4" value="3"><span>Cerca de 365 dias terrestres.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>Uma volta ao redor do Sol define o ano de Mercúrio, que dura cerca de 88 dias terrestres.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="0">
+          <legend><span class="q-num">Questão 5</span>Quantos anos de Mercúrio cabem em um dia solar do planeta?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q5" value="0" required><span>Cerca de dois anos.</span></label>
+            <label class="choice"><input type="radio" name="q5" value="1"><span>Cerca de meio ano.</span></label>
+            <label class="choice"><input type="radio" name="q5" value="2"><span>Cerca de um ano.</span></label>
+            <label class="choice"><input type="radio" name="q5" value="3"><span>Cerca de quatro anos.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>Entre dois nascimentos consecutivos do Sol no mesmo local passam cerca de 176 dias terrestres, aproximadamente o dobro da duração do ano de Mercúrio.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="3">
+          <legend><span class="q-num">Questão 6</span>Por que o fundo de algumas crateras polares permanece na sombra?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q6" value="0" required><span>Porque as crateras ficam cobertas por nuvens durante o ano todo.</span></label>
+            <label class="choice"><input type="radio" name="q6" value="1"><span>Porque o planeta passa a maior parte do ano na sombra de Vênus.</span></label>
+            <label class="choice"><input type="radio" name="q6" value="2"><span>Porque o ângulo de incidência da luz solar é muito alto perto dos polos.</span></label>
+            <label class="choice"><input type="radio" name="q6" value="3"><span>Porque o eixo é pouco inclinado, e a luz rasante não alcança o fundo de algumas crateras.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>Mercúrio tem uma inclinação axial muito pequena. Próximo aos polos, a luz chega em ângulo baixo e as bordas das crateras podem bloquear a iluminação do fundo.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="1">
+          <legend><span class="q-num">Questão 7</span>Qual afirmação descreve o núcleo de Mercúrio?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q7" value="0" required><span>Seu raio equivale a cerca de 15% do raio do planeta.</span></label>
+            <label class="choice"><input type="radio" name="q7" value="1"><span>É metálico, parcialmente líquido e tem cerca de 85% do raio do planeta.</span></label>
+            <label class="choice"><input type="radio" name="q7" value="2"><span>É totalmente gasoso e fica sob uma fina camada de gelo.</span></label>
+            <label class="choice"><input type="radio" name="q7" value="3"><span>Seu raio é aproximadamente a metade do raio do planeta.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>O núcleo metálico é parcialmente líquido. Seu raio corresponde a cerca de 85% do raio total de Mercúrio.</p>
+        </fieldset>
+        <fieldset class="card question" data-answer="2">
+          <legend><span class="q-num">Questão 8</span>Qual missão registrou mais de 200 mil imagens de Mercúrio?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q8" value="0" required><span>Voyager 1.</span></label>
+            <label class="choice"><input type="radio" name="q8" value="1"><span>Mariner 10.</span></label>
+            <label class="choice"><input type="radio" name="q8" value="2"><span>MESSENGER.</span></label>
+            <label class="choice"><input type="radio" name="q8" value="3"><span>Apollo 11.</span></label>
+          </div>
+          <p class="feedback" hidden><strong></strong>A Mariner 10 também estudou Mercúrio. A MESSENGER registrou mais de 200 mil imagens do planeta.</p>
+        </fieldset>
+      </div>
+      <div class="actions">
+        <button class="action" type="submit">Corrigir múltipla escolha</button>
+        <p id="resultado" role="status"></p>
+      </div>
+      <div class="actions"><button class="action outline" type="reset">Limpar todas as respostas</button></div>
+    </form>
+  </section>
+</main>
+<script>
+const player = document.querySelector('#video-aula');
+const chapterButtons = Array.from(document.querySelectorAll('[data-time]'));
+const videoError = document.querySelector('#erro-video');
+
+function markChapter() {
+  let active = chapterButtons[0];
+  for (const button of chapterButtons) {
+    if (Number(button.dataset.time) <= player.currentTime + 0.05) active = button;
+  }
+  for (const button of chapterButtons) {
+    if (button === active) button.setAttribute('aria-current', 'true');
+    else button.removeAttribute('aria-current');
+  }
+}
+
+function showVideoError() {
+  videoError.hidden = false;
+  for (const button of chapterButtons) button.disabled = true;
+}
+
+player.addEventListener('error', showVideoError);
+if (player.error) showVideoError();
+player.addEventListener('timeupdate', markChapter);
+player.addEventListener('seeked', markChapter);
+player.addEventListener('contextmenu', event => event.preventDefault());
+
+for (const button of chapterButtons) {
+  button.addEventListener('click', () => {
+    player.currentTime = Number(button.dataset.time);
+    markChapter();
+    player.play().catch(() => {});
+  });
+}
+
+const quiz = document.querySelector('#form-quiz');
+const objective = Array.from(quiz.querySelectorAll('[data-answer]'));
+const progress = document.querySelector('#progresso');
+const count = document.querySelector('#respondidas');
+const result = document.querySelector('#resultado');
+
+function updateProgress() {
+  const answered = objective.filter(question => question.querySelector('input:checked')).length;
+  progress.value = answered;
+  count.textContent = `${answered} de ${objective.length} respondidas`;
+}
+
+function hideFeedback(question) {
+  delete question.dataset.result;
+  question.querySelector('.feedback').hidden = true;
+}
+
+quiz.addEventListener('change', event => {
+  if (event.target.type !== 'radio') return;
+  hideFeedback(event.target.closest('[data-answer]'));
+  result.textContent = '';
+  updateProgress();
+});
+
+quiz.addEventListener('submit', event => {
+  event.preventDefault();
+  let score = 0;
+  for (const question of objective) {
+    const correct = question.querySelector('input:checked')?.value === question.dataset.answer;
+    score += Number(correct);
+    question.dataset.result = correct ? 'right' : 'wrong';
+    const feedback = question.querySelector('.feedback');
+    feedback.querySelector('strong').textContent = correct ? 'Correto. ' : 'Incorreto. ';
+    feedback.hidden = false;
+  }
+  result.textContent = `Você acertou ${score} de ${objective.length} questões de múltipla escolha.`;
+});
+
+quiz.addEventListener('reset', () => {
+  for (const question of objective) hideFeedback(question);
+  result.textContent = '';
+  setTimeout(updateProgress, 0);
+});
+
+updateProgress();
+</script>
+</body>
+</html>
